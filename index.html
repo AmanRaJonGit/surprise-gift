@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Happy Birthday My Love</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to top right, #f8d7da 0%, #f7c0c0 100%);
+      font-family: 'Great Vibes', cursive;
+      overflow-x: hidden;
+      position: relative;
+    }
+    .neon {
+      color: #fff;
+      text-shadow: 0 0 10px #ff77aa, 0 0 20px #ff77aa, 0 0 30px #ff77aa;
+    }
+    .typing {
+      border-right: .1em solid #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: white; }
+    }
+    .heart {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 6s infinite ease-in;
+    }
+    .heart::before, .heart::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: red;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -15px;
+      left: 0;
+    }
+    .heart::after {
+      left: -15px;
+      top: 0;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-800px) rotate(45deg); opacity: 0; }
+    }
+    .balloon {
+      position: fixed;
+      bottom: -100px;
+      width: 40px;
+      height: 60px;
+      background: radial-gradient(circle, #ff69b4 0%, #ff1493 100%);
+      border-radius: 50%;
+      animation: riseBalloon 6s ease-in-out infinite;
+      z-index: 999;
+    }
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 20px;
+      background: #555;
+    }
+    @keyframes riseBalloon {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+    }
+    .confetti {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      background: yellow;
+      animation: confettiFall 2s linear infinite;
+      opacity: 0;
+    }
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(-50vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(50vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    .sparkles {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%);
+      border-radius: 50%;
+      animation: sparkle 1.5s infinite;
+      opacity: 0;
+    }
+    @keyframes sparkle {
+      0% { opacity: 0.5; }
+      50% { opacity: 1; }
+      100% { opacity: 0.5; }
+    }
+    .slideshow-container {
+      max-width: 100%;
+      position: relative;
+      margin: auto;
+      overflow: hidden;
+    }
+    .slide-img {
+      display: none;
+      margin: auto;
+      border-radius: 20px;
+    }
+    .active-slide {
+      display: block;
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen text-center px-4 sm:px-6 py-8 relative overflow-x-hidden">
+
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+  </audio>
+
+  <h1 class="text-3xl sm:text-5xl neon font-bold animate-bounce mb-6 transition-transform transform hover:scale-110">🎉 Happy Birthday, Motki! 🎉</h1>
+  <p class="text-base sm:text-2xl text-white mt-4 max-w-xl px-2 sm:px-4">I love you jaanemn, Baua, betu — I love you more than anything 💖</p>
+
+  <div class="mt-10 w-full max-w-3xl bg-white bg-opacity-20 p-4 sm:p-6 rounded-xl shadow-xl backdrop-blur-sm">
+    <h2 class="text-2xl sm:text-3xl text-pink-700 font-bold mb-4">A Special Message 💌</h2>
+    <p class="text-lg sm:text-xl text-white typing">Every moment with you is a beautiful memory in the making. I feel lucky to celebrate your special day with you. You deserve the universe and more. I love you endlessly. 💘</p>
+  </div>
+
+  <div id="surprise" class="hidden flex-col items-center mt-10 animate__animated animate__fadeInUp">
+    <div class="slideshow-container w-full flex justify-center">
+      <img class="slide-img active-slide w-64 sm:w-80 max-w-full h-auto rounded-3xl shadow-lg" src="https://i.postimg.cc/s232qyJY/photo-2025-05-10-02-25-59.jpg" alt="Photo1" />
+      <img class="slide-img w-64 sm:w-80 max-w-full h-auto rounded-3xl shadow-lg" src="https://i.postimg.cc/LssJh2ZH/photo-2025-05-10-02-26-18.jpg" alt="Photo2" />
+    </div>
+    <h2 id="birthdayText" class="text-2xl sm:text-4xl text-white neon animate-bounce my-4 hidden">🎂 Happy Birthday to the Queen of My Heart! 🎂</h2>
+  </div>
+
+  <button id="loveBtn" class="mt-10 px-6 sm:px-8 py-4 bg-gradient-to-r from-pink-400 to-red-500 hover:from-pink-500 hover:to-red-600 text-white font-bold rounded-full shadow-lg text-lg sm:text-xl transition-transform duration-300 hover:scale-110">
+    Click for a surprise 💝
+  </button>
+
+  <div id="cakeSection" class="hidden flex flex-col items-center mt-10">
+    <img id="cakeImage" src="https://i.postimg.cc/bJGJDVGG/png-transparent-happy-birthday-cake-birthday-cake-birthday-cake-wish-baked-goods-happy-birthday-to-y.png" alt="Whole Cake" class="w-60 sm:w-72 max-w-full mb-4 transition-all duration-500">
+    <button id="cutCakeBtn" class="px-6 py-3 bg-pink-600 text-white font-bold rounded-full hover:bg-pink-700 transition-all">Cut the Cake 🎂</button>
+  </div>
+
+  <script>
+    function getSafeLeft() {
+      return Math.min(Math.random() * window.innerWidth, window.innerWidth - 30) + 'px';
+    }
+
+    // Floating hearts
+    for (let i = 0; i < 15; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = getSafeLeft();
+      heart.style.animationDuration = 4 + Math.random() * 4 + 's';
+      document.body.appendChild(heart);
+    }
+
+    // Show surprise and cake
+    document.getElementById('loveBtn').addEventListener('click', () => {
+      document.getElementById('surprise').classList.remove('hidden');
+      document.getElementById('cakeSection').classList.remove('hidden');
+      document.getElementById('loveBtn').style.display = 'none';
+      document.getElementById('birthdayText').classList.remove('hidden');
+    });
+
+    // Slideshow logic
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".slide-img");
+    function showSlides() {
+      slides.forEach(slide => slide.classList.remove("active-slide"));
+      slideIndex++;
+      if (slideIndex > slides.length) slideIndex = 1;
+      slides[slideIndex - 1].classList.add("active-slide");
+      setTimeout(showSlides, 3000);
+    }
+    showSlides();
+
+    // Cake cut and balloons
+    document.getElementById('cutCakeBtn').addEventListener('click', () => {
+      const cakeImage = document.getElementById('cakeImage');
+      cakeImage.style.opacity = '0.5';
+
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = getSafeLeft();
+        confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
+        document.body.appendChild(confetti);
+      }
+
+      const sparkles = document.createElement('div');
+      sparkles.classList.add('sparkles');
+      document.body.appendChild(sparkles);
+
+      for (let i = 0; i < 20; i++) {
+        const balloon = document.createElement('div');
+        balloon.classList.add('balloon');
+        balloon.style.left = getSafeLeft();
+        balloon.style.animationDuration = (4 + Math.random() * 3) + 's';
+        document.body.appendChild(balloon);
+        setTimeout(() => balloon.remove(), 8000);
+      }
+
+      document.getElementById('cutCakeBtn').disabled = true;
+      document.getElementById('cutCakeBtn').innerText = "Cake Cut 🎉";
+    });
+  </script>
+</body>
+</html>
